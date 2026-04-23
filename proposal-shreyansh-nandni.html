@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A Special Message for Nandni 💍</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose: #c0395a;
+    --rose-light: #f7d6e0;
+    --rose-mid: #e8728a;
+    --gold: #b8860b;
+    --gold-light: #f5e6c0;
+    --cream: #fdf6f0;
+    --dark: #2a0f1a;
+    --text: #4a1628;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated petal background */
+  .petals-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .petal {
+    position: absolute;
+    top: -60px;
+    width: 14px;
+    height: 18px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(110vh) rotate(360deg) scale(0.6); opacity: 0; }
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: radial-gradient(ellipse at 50% 0%, #f9e4ec 0%, #fdf6f0 60%);
+    z-index: 1;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c0395a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+  }
+
+  .envelope {
+    font-size: 64px;
+    animation: float 3s ease-in-out infinite, fadeIn 1s ease forwards;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 8px 20px rgba(192,57,90,0.3));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(-3deg); }
+    50%       { transform: translateY(-12px) rotate(3deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .to-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose-mid);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.4s forwards;
+  }
+
+  .her-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(54px, 12vw, 96px);
+    font-weight: 600;
+    color: var(--rose);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.7s forwards;
+    text-shadow: 0 4px 30px rgba(192,57,90,0.15);
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 4vw, 24px);
+    color: var(--rose-mid);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s ease 2s forwards;
+    color: var(--rose-mid);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid var(--rose-mid);
+    border-bottom: 2px solid var(--rose-mid);
+    transform: rotate(45deg);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50%       { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* Message Section */
+  .message-section {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-ornament {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 3rem;
+    opacity: 0.6;
+    letter-spacing: 8px;
+  }
+
+  .message-card {
+    background: white;
+    border-radius: 24px;
+    padding: clamp(2rem, 6vw, 4rem);
+    box-shadow: 0 20px 80px rgba(192,57,90,0.12), 0 4px 20px rgba(192,57,90,0.06);
+    border: 1px solid rgba(192,57,90,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .message-card::before {
+    content: '❝';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    color: var(--rose-light);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .message-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height: 1.85;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+  }
+
+  .message-text strong {
+    font-style: normal;
+    color: var(--rose);
+  }
+
+  .from-label {
+    text-align: right;
+    margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--rose-mid);
+    font-style: italic;
+  }
+
+  /* Ring decoration */
+  .ring-divider {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 36px;
+    animation: spin-slow 8s linear infinite;
+  }
+
+  @keyframes spin-slow {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Proposal Section */
+  .proposal-section {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 2rem 6rem;
+    background: linear-gradient(180deg, transparent, rgba(247,214,224,0.4) 30%, rgba(247,214,224,0.6) 70%, transparent);
+  }
+
+  .proposal-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 6vw, 52px);
+    font-weight: 600;
+    color: var(--rose);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .proposal-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    color: var(--rose-mid);
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .buttons-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-yes {
+    padding: 18px 48px;
+    background: linear-gradient(135deg, #c0395a, #8b1a34);
+    color: white;
+    border: none;
+    border-radius: 60px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(192,57,90,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-yes:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(192,57,90,0.5);
+  }
+
+  .btn-no {
+    padding: 16px 36px;
+    background: transparent;
+    color: #ccc;
+    border: 1.5px solid #e8e0e4;
+    border-radius: 60px;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    font-weight: 300;
+  }
+
+  /* Success State */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, #fff0f5, #fdf6f0);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .success-overlay.show {
+    display: flex;
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .success-ring {
+    font-size: 80px;
+    animation: float 3s ease-in-out infinite;
+    margin-bottom: 1.5rem;
+  }
+
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 8vw, 64px);
+    font-weight: 600;
+    color: var(--rose);
+    margin-bottom: 1rem;
+  }
+
+  .success-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--rose-mid);
+    font-style: italic;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .confetti-emoji {
+    font-size: 30px;
+    animation: burst 0.5s ease forwards;
+    display: inline-block;
+    margin: 0.5rem;
+  }
+
+  @keyframes burst {
+    0%   { transform: scale(0) rotate(0deg); opacity: 0; }
+    60%  { transform: scale(1.3) rotate(20deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: #cba8b4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .buttons-row { flex-direction: column; }
+    .btn-no { width: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating petals -->
+<div class="petals-container" id="petals"></div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="envelope">💌</div>
+  <p class="to-label">A special message for</p>
+  <h1 class="her-name">Nandni</h1>
+  <p class="tagline">from the one who loves you most</p>
+  <div class="scroll-hint">
+    <span>Open the letter</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- Message -->
+<section class="message-section">
+  <div class="section-ornament">🌹 · 💍 · 🌹</div>
+  <div class="message-card">
+    <p class="message-text">
+      I have stood at the edge of the most breathtaking places on earth, and none of them — <strong>none</strong> — have ever moved me the way you do.
+      <br><br>
+      You are my greatest wonder. The thought of a future without you feels like a sky without stars — possible, but <strong>unbearably empty</strong>.
+      <br><br>
+      I want to give you forever. I want to be the person who chooses you, every single morning, for the rest of my life.
+      <br><br>
+      My love, my heart, my home —
+    </p>
+    <div class="from-label">— Shreyansh 💕</div>
+  </div>
+</section>
+
+<!-- Proposal -->
+<section class="proposal-section">
+  <p class="proposal-question">Will you do me the greatest honor of my life?</p>
+  <p class="proposal-sub">💍 &nbsp; will you marry me, nandni &nbsp; 💍</p>
+  <div class="buttons-row" id="buttonsRow">
+    <button class="btn-yes" onclick="sayYes()">Yes, forever & always 💍</button>
+    <button class="btn-no" id="noBtn" onmouseover="runAway(this)" ontouchstart="runAway(this)">Let me think…</button>
+  </div>
+</section>
+
+<!-- Success -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-ring">💍</div>
+  <h2 class="success-title">She Said YES! 🎉</h2>
+  <p style="font-size:36px;margin:1rem 0;">
+    <span class="confetti-emoji" style="animation-delay:0s">🎊</span>
+    <span class="confetti-emoji" style="animation-delay:0.1s">💕</span>
+    <span class="confetti-emoji" style="animation-delay:0.2s">🌹</span>
+    <span class="confetti-emoji" style="animation-delay:0.3s">✨</span>
+    <span class="confetti-emoji" style="animation-delay:0.4s">🥂</span>
+  </p>
+  <p class="success-sub">Nandni & Shreyansh — forever begins today. May your love story be the most beautiful one ever written. 💖</p>
+</div>
+
+<footer>made with love, for nandni 🌹</footer>
+
+<script>
+  // Generate petals
+  const colors = ['#e8728a','#c0395a','#f7a8bc','#ffb3c6','#ffd6e7','#f4808a'];
+  const container = document.getElementById('petals');
+  for (let i = 0; i < 28; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.width = (10 + Math.random() * 12) + 'px';
+    p.style.height = (14 + Math.random() * 14) + 'px';
+    p.style.animationDuration = (7 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.borderRadius = Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%';
+    p.style.transform = `rotate(${Math.random()*360}deg)`;
+    container.appendChild(p);
+  }
+
+  // No button runs away
+  function runAway(el) {
+    const row = document.getElementById('buttonsRow');
+    const rowRect = row.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const maxX = rowRect.width - elRect.width;
+    const rx = (Math.random() - 0.5) * maxX * 1.2;
+    const ry = (Math.random() - 0.5) * 80;
+    el.style.transform = `translate(${rx}px, ${ry}px)`;
+    el.style.transition = 'transform 0.25s cubic-bezier(.34,1.56,.64,1)';
+  }
+
+  // Yes!
+  function sayYes() {
+    document.getElementById('successOverlay').classList.add('show');
+    // Extra petals burst
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = (Math.random() * 100) + '%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.width = (14 + Math.random() * 10) + 'px';
+      p.style.height = (16 + Math.random() * 12) + 'px';
+      p.style.animationDuration = (4 + Math.random() * 6) + 's';
+      p.style.animationDelay = (Math.random() * 2) + 's';
+      container.appendChild(p);
+    }
+  }
+</script>
+</body>
+</html>
